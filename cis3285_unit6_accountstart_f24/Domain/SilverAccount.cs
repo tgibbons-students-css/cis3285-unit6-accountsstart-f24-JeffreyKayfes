@@ -10,7 +10,7 @@ namespace Domain
     {
         public override int CalculateRewardPoints(decimal amount)
         {
-            return (int)decimal.Floor(amount / SilverTransactionCostPerPoint);
+            return Math.Max((int)decimal.Floor(amount / SilverTransactionCostPerPoint), 0);
         }
 
         private const int SilverTransactionCostPerPoint = 10;

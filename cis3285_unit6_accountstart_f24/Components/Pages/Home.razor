@@ -13,7 +13,7 @@
 <br>
 <br>
 <label for="accountList">Current Accounts:</label>
-<select name="accountList" id="accountList" class="form-control" @bind="selectedAccountName" @bind:event="onchange">
+<select name="accountList" id="accountList" class="form-control" @bind="selectedAccountName" @bind:event="onchange" @bind:after="updateAccount">
     @if (accountList != null && accountList.Count > 0)
     {
         <option value="NoAccountSelected">Select an account</option>
@@ -79,6 +79,7 @@
         acctService.Deposit(selectedAccountName, amount);
         accountBalance = acctService.GetAccountBalance(selectedAccountName);
         strAccountBalance = accountBalance.ToString();
+        strDepositAmount = string.Empty;
         StateHasChanged();
     }
 
@@ -88,6 +89,7 @@
         acctService.Withdrawal(selectedAccountName, amount);
         accountBalance = acctService.GetAccountBalance(selectedAccountName);
         strAccountBalance = accountBalance.ToString();
+        strWithdrawAmount = string.Empty;
         StateHasChanged();
     }
 

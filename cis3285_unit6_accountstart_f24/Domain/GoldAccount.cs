@@ -10,7 +10,7 @@ namespace Domain
     {
         public override int CalculateRewardPoints(decimal amount)
         {
-            return (int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint));
+            return Math.Max((int)decimal.Floor((Balance / GoldBalanceCostPerPoint) + (amount / GoldTransactionCostPerPoint)), 0);
         }
 
         private const int GoldTransactionCostPerPoint = 5;
